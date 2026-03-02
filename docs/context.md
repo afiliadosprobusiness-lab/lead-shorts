@@ -15,14 +15,17 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 - Monorepo npm workspaces.
 - Frontend: React 18 + TypeScript + Vite + TailwindCSS.
 - Backend: Node.js + Express + TypeScript + Zod.
+- Deploy principal: Vercel para `apps/web` y `apps/api`.
+- Persistencia y auth: Firebase solo cuando sea necesario (Firestore/Auth), con fallback en memoria mientras no haya credenciales.
 - Render real de video: fuera del alcance del MVP actual; se simula con metadata y URLs placeholder.
 
 ## Arquitectura
 
 - `apps/web`: landing principal y formulario de generacion.
-- `apps/api`: API REST versionada en `/api/v1`.
+- `apps/api`: API REST versionada en `/api/v1`, preparada para Vercel como serverless function.
 - `docs`: contrato y contexto operativo.
 - El frontend tiene modo demo local si la API no responde, para permitir despliegue estatico en Vercel sin bloquear la experiencia.
+- La API usa Firestore solo si existen credenciales; si no, mantiene persistencia temporal en memoria.
 
 ## Flujos Principales
 
@@ -43,14 +46,19 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 
 ## Integraciones Externas
 
-- Ninguna activa en esta fase.
+- Vercel para despliegue de frontend y backend.
+- Firebase opcional para Firestore/Auth.
 - Futuras integraciones previstas: LLM para guiones, TTS, FFmpeg, storage.
 
 ## Variables de Entorno
 
 - `PORT`: puerto del backend.
 - `CLIENT_ORIGIN`: origen permitido por CORS.
-- `VITE_API_URL`: base URL consumida por el frontend.
+- `VITE_API_URL`: base URL completa consumida por el frontend, incluyendo el prefijo versionado del entorno.
+- `FIREBASE_PROJECT_ID`: proyecto Firebase.
+- `FIREBASE_CLIENT_EMAIL`: service account email para Admin SDK.
+- `FIREBASE_PRIVATE_KEY`: private key para Admin SDK.
+- `FIREBASE_GENERATIONS_COLLECTION`: coleccion usada para generaciones.
 
 ## Seguridad
 

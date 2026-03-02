@@ -1,3 +1,4 @@
+import { firestoreDb } from "../lib/firebaseAdmin";
 import { Generation, GenerationInput, Plan, Tone } from "../types";
 
 const HOOK_BY_TONE: Record<Tone, string> = {
@@ -64,6 +65,9 @@ const buildScript = (
 };
 
 class GenerationStore {
+  private readonly collectionName =
+    process.env.FIREBASE_GENERATIONS_COLLECTION || "generations";
+
   private readonly items = new Map<
     string,
     {
@@ -76,7 +80,7 @@ class GenerationStore {
     return plans;
   }
 
-  create(input: GenerationInput): Generation {
+  async create(input: GenerationInput): Promise<Generation> {
     const tone = input.tone ?? "directo";
     const id = `gen_${Date.now()}`;
     const now = new Date().toISOString();
@@ -94,40 +98,70 @@ class GenerationStore {
       updatedAt: now
     };
 
-    this.items.set(id, {
-      generation,
-      input
-    });
+    if (firestoreDb) {
+      await firestoreDb.collection(this.collectionName).doc(id).set({
+        generation,
+        input
+      });
+    } else {
+      this.items.set(id, {
+        generation,
+        input
+      });
+    }
 
     return generation;
   }
 
-  getById(id: string): Generation | undefined {
+  async getById(id: string): Promise<Generation | undefined> {
+    if (firestoreDb) {
+      const snapshot = await firestoreDb.collection(this.collectionName).doc(id).get();
+
+      if (!snapshot.exists) {
+        return undefined;
+      }
+
+      return (snapshot.data() as { generation: Generation }).generation;
+    }
+
     return this.items.get(id)?.generation;
   }
 
-  regenerate(id: string, tone: Tone): Generation | undefined {
-    const current = this.items.get(id);
+  async regenerate(id: string, tone: Tone): Promise<Generation | undefined> {
+    const current = firestoreDb
+      ? await firestoreDb.collection(this.collectionName).doc(id).get()
+      : null;
+    const currentValue = firestoreDb
+      ? current?.exists
+        ? (current.data() as { generation: Generation; input: GenerationInput })
+        : undefined
+      : this.items.get(id);
 
-    if (!current) {
+    if (!currentValue) {
       return undefined;
     }
 
-    const nextDraft = buildScript(current.input, tone, Date.now());
+    const nextDraft = buildScript(currentValue.input, tone, Date.now());
 
     const next: Generation = {
-      ...current.generation,
+      ...currentValue.generation,
       ...nextDraft,
       updatedAt: new Date().toISOString()
     };
 
-    this.items.set(id, {
+    const nextValue = {
       generation: next,
       input: {
-        ...current.input,
+        ...currentValue.input,
         tone
       }
-    });
+    };
+
+    if (firestoreDb) {
+      await firestoreDb.collection(this.collectionName).doc(id).set(nextValue);
+    } else {
+      this.items.set(id, nextValue);
+    }
 
     return next;
   }

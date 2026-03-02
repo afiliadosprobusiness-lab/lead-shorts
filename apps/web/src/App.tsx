@@ -52,7 +52,9 @@ type FormState = {
   tone: Tone;
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || "http://localhost:4000/api/v1"
+).trim();
 
 const initialForm: FormState = {
   businessCategory: "",
@@ -161,7 +163,7 @@ function App() {
   useEffect(() => {
     const loadPlans = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/v1/plans`);
+        const response = await fetch(`${API_BASE_URL}/plans`);
         const payload = (await response.json()) as ApiSuccess<Plan[]> | ApiFailure;
 
         if (!response.ok || !payload.success) {
@@ -207,7 +209,7 @@ function App() {
     setStatusMessage("Generando hook, guion y preview...");
 
     try {
-      const response = await fetch(`${API_URL}/api/v1/generations`, {
+      const response = await fetch(`${API_BASE_URL}/generations`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -257,7 +259,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `${API_URL}/api/v1/generations/${generation.id}/regenerate`,
+        `${API_BASE_URL}/generations/${generation.id}/regenerate`,
         {
           method: "POST",
           headers: {

@@ -24,17 +24,22 @@ app.use((req, res, next) => {
   return next();
 });
 
-app.get("/api/v1/health", (_req, res) => {
+const sendHealth = (_req: Request, res: Response) => {
   return res.json({
     success: true,
     data: {
       status: "ok"
     }
   });
-});
+};
+
+app.get("/api/v1/health", sendHealth);
+app.get("/v1/health", sendHealth);
 
 app.use("/api/v1/plans", planRouter);
+app.use("/v1/plans", planRouter);
 app.use("/api/v1/generations", generationRouter);
+app.use("/v1/generations", generationRouter);
 
 app.use((_req, res) => {
   const error: ApiError = {
@@ -66,4 +71,4 @@ app.use(
 );
 
 export { app };
-
+export default app;

@@ -190,7 +190,12 @@ Response `200`
 - `success`, `data` y `error` son obligatorios segun el tipo de respuesta.
 - `ratio` se mantiene fijo en `9:16` para el MVP.
 
+## Compatibilidad de Deploy
+
+- En desarrollo local, los endpoints canónicos se sirven bajo `/api/v1/*`.
+- En Vercel, el backend Express puede exponerse bajo `/v1/*`; el frontend debe usar `VITE_API_URL` apuntando al prefijo completo del entorno.
+
 ## Changelog del Contrato
 
 - 2026-03-02 | Creacion del contrato base del MVP | non-breaking | Define endpoints iniciales, modelos y errores para frontend y backend.
-
+- 2026-03-02 | Nota de compatibilidad para deploy en Vercel con base path configurable | non-breaking | Mantiene el shape del contrato y permite consumir el mismo backend con base URL versionada por entorno.

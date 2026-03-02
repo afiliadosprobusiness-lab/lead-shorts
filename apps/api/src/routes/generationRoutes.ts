@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { NextFunction, Router } from "express";
 import { ZodError } from "zod";
 import {
   generationInputSchema,
@@ -21,67 +21,81 @@ const toValidationError = (error: ZodError): ApiError => ({
   }
 });
 
-router.post("/", (req, res) => {
-  const parsed = generationInputSchema.safeParse(req.body);
+router.post("/", async (req, res, next: NextFunction) => {
+  try {
+    const parsed = generationInputSchema.safeParse(req.body);
 
-  if (!parsed.success) {
-    return res.status(400).json(toValidationError(parsed.error));
+    if (!parsed.success) {
+      return res.status(400).json(toValidationError(parsed.error));
+    }
+
+    const generation = await generationStore.create({
+      ...parsed.data,
+      city: parsed.data.city || undefined
+    });
+
+    return res.status(201).json({
+      success: true,
+      data: generation
+    });
+  } catch (error) {
+    return next(error);
   }
-
-  const generation = generationStore.create({
-    ...parsed.data,
-    city: parsed.data.city || undefined
-  });
-
-  return res.status(201).json({
-    success: true,
-    data: generation
-  });
 });
 
-router.get("/:id", (req, res) => {
-  const generation = generationStore.getById(req.params.id);
+router.get("/:id", async (req, res, next: NextFunction) => {
+  try {
+    const generation = await generationStore.getById(req.params.id);
 
-  if (!generation) {
-    return res.status(404).json({
-      success: false,
-      error: {
-        code: "NOT_FOUND",
-        message: "Generacion no encontrada"
-      }
+    if (!generation) {
+      return res.status(404).json({
+        success: false,
+        error: {
+          code: "NOT_FOUND",
+          message: "Generacion no encontrada"
+        }
+      });
+    }
+
+    return res.json({
+      success: true,
+      data: generation
     });
+  } catch (error) {
+    return next(error);
   }
-
-  return res.json({
-    success: true,
-    data: generation
-  });
 });
 
-router.post("/:id/regenerate", (req, res) => {
-  const parsed = regenerateSchema.safeParse(req.body);
+router.post("/:id/regenerate", async (req, res, next: NextFunction) => {
+  try {
+    const parsed = regenerateSchema.safeParse(req.body);
 
-  if (!parsed.success) {
-    return res.status(400).json(toValidationError(parsed.error));
-  }
+    if (!parsed.success) {
+      return res.status(400).json(toValidationError(parsed.error));
+    }
 
-  const generation = generationStore.regenerate(req.params.id, parsed.data.tone);
+    const generation = await generationStore.regenerate(
+      req.params.id,
+      parsed.data.tone
+    );
 
-  if (!generation) {
-    return res.status(404).json({
-      success: false,
-      error: {
-        code: "NOT_FOUND",
-        message: "Generacion no encontrada"
-      }
+    if (!generation) {
+      return res.status(404).json({
+        success: false,
+        error: {
+          code: "NOT_FOUND",
+          message: "Generacion no encontrada"
+        }
+      });
+    }
+
+    return res.json({
+      success: true,
+      data: generation
     });
+  } catch (error) {
+    return next(error);
   }
-
-  return res.json({
-    success: true,
-    data: generation
-  });
 });
 
 export { router as generationRouter };
-

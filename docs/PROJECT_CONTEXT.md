@@ -7,9 +7,10 @@ Proyecto nuevo para validar un MVP SaaS que genera previews de videos cortos ver
 ## Estado Actual
 
 - Landing de alta conversion en `apps/web`.
-- API REST mockeada en `apps/api`.
+- API REST en `apps/api`, preparada para deploy serverless en Vercel.
 - Contrato base definido en `docs/contract.md`.
 - Fallback demo en frontend cuando la API no responde, util para deploy estatico en Vercel.
+- Persistencia opcional con Firebase; si no hay credenciales, el backend usa memoria.
 
 ## Rutas Principales
 
@@ -31,12 +32,17 @@ Proyecto nuevo para validar un MVP SaaS que genera previews de videos cortos ver
 - TailwindCSS
 - Express
 - Zod
+- firebase-admin
 
 ## Variables de Entorno
 
 - `PORT`
 - `CLIENT_ORIGIN`
-- `VITE_API_URL`
+- `VITE_API_URL` (base completa con prefijo versionado)
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_CLIENT_EMAIL`
+- `FIREBASE_PRIVATE_KEY`
+- `FIREBASE_GENERATIONS_COLLECTION`
 
 ## Alineacion
 
