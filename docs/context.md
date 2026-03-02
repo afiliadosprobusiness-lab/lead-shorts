@@ -22,6 +22,7 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 - `apps/web`: landing principal y formulario de generacion.
 - `apps/api`: API REST versionada en `/api/v1`.
 - `docs`: contrato y contexto operativo.
+- El frontend tiene modo demo local si la API no responde, para permitir despliegue estatico en Vercel sin bloquear la experiencia.
 
 ## Flujos Principales
 
@@ -38,6 +39,7 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 3. Frontend llama `POST /api/v1/generations`.
 4. API devuelve un objeto `Generation` listo para preview.
 5. Usuario puede descargar o regenerar variando el tono.
+6. Si la API no esta disponible, el frontend genera un preview demo local y mantiene la landing operativa.
 
 ## Integraciones Externas
 
@@ -63,4 +65,3 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 - Sin scroll horizontal.
 - Feedback claro para `loading`, `error` y `empty`.
 - Focus visible en todos los elementos interactivos.
-

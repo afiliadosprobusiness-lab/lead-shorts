@@ -69,6 +69,25 @@ const toneOptions: Array<{ value: Tone; label: string }> = [
   { value: "urgente", label: "Urgente" }
 ];
 
+const fallbackPlans: Plan[] = [
+  {
+    id: "starter",
+    name: "Starter",
+    pricePen: 39,
+    monthlyGenerations: 12,
+    highlight: false,
+    description: "Ideal para validar contenido constante."
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    pricePen: 79,
+    monthlyGenerations: 40,
+    highlight: true,
+    description: "Pensado para negocios que quieren crecer mas rapido."
+  }
+];
+
 const trustPoints = [
   "Hook llamativo en segundos",
   "CTA listo para WhatsApp",
@@ -82,6 +101,50 @@ const steps = [
   "Descargas el video y lo publicas hoy."
 ];
 
+const buildLocalGeneration = (form: FormState, tone: Tone): Generation => {
+  const hookByTone: Record<Tone, string> = {
+    directo: "Deten el scroll: hoy puedes vender mas por WhatsApp",
+    cercano: "Convierte tu oferta en un video que conecta de inmediato",
+    premium: "Haz que tu negocio se vea confiable y listo para vender",
+    urgente: "Muestra tu oferta ahora antes de que el cliente siga de largo"
+  };
+
+  const timestamp = new Date().toISOString();
+  const citySuffix = form.city.trim() ? ` en ${form.city.trim()}` : "";
+  const cleanOffer = form.offer.trim();
+  const cleanCategory = form.businessCategory.trim().toLowerCase();
+  const cleanWhatsapp = form.whatsapp.trim();
+  const hook = hookByTone[tone];
+
+  return {
+    id: `demo_${Date.now()}`,
+    status: "ready",
+    ratio: "9:16",
+    durationSec: 18,
+    hook,
+    script: `${hook} Si tienes un ${cleanCategory}${citySuffix}, esta oferta puede traer mas mensajes: ${cleanOffer}. Publica este formato vertical y cierra conversaciones por WhatsApp sin editar.`,
+    subtitles: [
+      hook,
+      cleanOffer,
+      `Disponible${citySuffix || " para tu negocio"}`,
+      `WhatsApp: ${cleanWhatsapp}`
+    ],
+    cta: `Escribenos por WhatsApp al ${cleanWhatsapp}`,
+    musicTrack:
+      tone === "premium"
+        ? "Clean Luxe Beat"
+        : tone === "urgente"
+          ? "Fast Conversion"
+          : tone === "cercano"
+            ? "Warm Pulse"
+            : "Momentum Pop",
+    previewUrl: "#demo-preview",
+    downloadUrl: "#demo-download",
+    createdAt: timestamp,
+    updatedAt: timestamp
+  };
+};
+
 function App() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [generation, setGeneration] = useState<Generation | null>(null);
@@ -90,6 +153,7 @@ function App() {
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [loadError, setLoadError] = useState("");
   const [formError, setFormError] = useState("");
+  const [isDemoMode, setIsDemoMode] = useState(false);
   const [statusMessage, setStatusMessage] = useState(
     "Completa tus datos y genera tu primer video."
   );
@@ -108,8 +172,12 @@ function App() {
 
         setPlans(payload.data);
       } catch (error) {
+        setPlans(fallbackPlans);
+        setIsDemoMode(true);
         setLoadError(
-          error instanceof Error ? error.message : "No se pudo cargar la oferta"
+          error instanceof Error
+            ? `${error.message}. Mostrando planes demo.`
+            : "No se pudo cargar la oferta. Mostrando planes demo."
         );
       }
     };
@@ -163,12 +231,14 @@ function App() {
       setGeneration(payload.data);
       setStatusMessage("Preview listo para descargar o regenerar.");
     } catch (error) {
-      setFormError(
+      setGeneration(buildLocalGeneration(form, form.tone));
+      setIsDemoMode(true);
+      setFormError("");
+      setStatusMessage(
         error instanceof Error
-          ? error.message
-          : "Ocurrio un error al generar el video."
+          ? `${error.message}. Se genero un preview demo local.`
+          : "Se genero un preview demo local."
       );
-      setStatusMessage("Revisa los datos e intenta otra vez.");
     } finally {
       setIsSubmitting(false);
     }
@@ -182,10 +252,10 @@ function App() {
     setIsRegenerating(true);
     setFormError("");
     setStatusMessage("Regenerando una nueva variante...");
+    const nextTone =
+      toneOptions.find((option) => option.value !== form.tone)?.value || "cercano";
 
     try {
-      const nextTone =
-        toneOptions.find((option) => option.value !== form.tone)?.value || "cercano";
       const response = await fetch(
         `${API_URL}/api/v1/generations/${generation.id}/regenerate`,
         {
@@ -211,10 +281,18 @@ function App() {
       }));
       setStatusMessage("Nueva version lista.");
     } catch (error) {
-      setFormError(
-        error instanceof Error ? error.message : "No se pudo regenerar el video."
+      setGeneration(buildLocalGeneration(form, nextTone));
+      setIsDemoMode(true);
+      setFormError("");
+      setForm((current) => ({
+        ...current,
+        tone: nextTone
+      }));
+      setStatusMessage(
+        error instanceof Error
+          ? `${error.message}. Se genero una variante demo local.`
+          : "Se genero una variante demo local."
       );
-      setStatusMessage("Mantuvimos la version anterior.");
     } finally {
       setIsRegenerating(false);
     }
@@ -499,6 +577,12 @@ function App() {
                 <p className="text-sm text-slate-500" aria-live="polite">
                   {statusMessage}
                 </p>
+
+                {isDemoMode ? (
+                  <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                    API no disponible: estas viendo una demo local para la landing desplegada.
+                  </div>
+                ) : null}
 
                 {formError ? (
                   <div

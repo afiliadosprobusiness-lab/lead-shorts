@@ -9,6 +9,7 @@ Proyecto nuevo para validar un MVP SaaS que genera previews de videos cortos ver
 - Landing de alta conversion en `apps/web`.
 - API REST mockeada en `apps/api`.
 - Contrato base definido en `docs/contract.md`.
+- Fallback demo en frontend cuando la API no responde, util para deploy estatico en Vercel.
 
 ## Rutas Principales
 
@@ -21,6 +22,7 @@ Proyecto nuevo para validar un MVP SaaS que genera previews de videos cortos ver
 2. Completa el formulario corto.
 3. Obtiene una previsualizacion lista para descargar.
 4. Puede regenerar otra version con un tono distinto.
+5. Si la API no responde, la web usa un preview demo local.
 
 ## Dependencias Clave
 
@@ -39,4 +41,3 @@ Proyecto nuevo para validar un MVP SaaS que genera previews de videos cortos ver
 ## Alineacion
 
 Este archivo resume `docs/context.md` y debe mantenerse sincronizado con ese documento.
-
