@@ -2,13 +2,14 @@
 
 ## Producto
 
-Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan generar videos verticales listos para publicar en Reels, TikTok y Shorts sin editar manualmente.
+Plataforma SaaS para negocios de Latam que necesitan generar videos tipo influencer con avatar IA, listos para publicar en Reels, TikTok, Shorts y Feed sin grabar ni editar manualmente.
 
 ## Propuesta de Valor
 
-- Mensaje principal: `Crea videos que atraen clientes en menos de 1 minuto.`
-- Resultado esperado: el usuario completa un formulario corto, recibe un video con hook, subtitulos, CTA a WhatsApp y un enlace de descarga.
+- Mensaje principal: `Crea videos tipo influencer que captan atencion desde el primer segundo.`
+- Resultado esperado: el usuario completa un formulario corto y recibe una muestra con avatar IA, voz y texto lista para revisar antes de descargar.
 - Restriccion de producto: no existe editor manual en el MVP.
+- Nota de producto: la landing posiciona el producto como vertical o cuadrado, pero el contrato/API vigente del MVP sigue devolviendo `ratio: 9:16`.
 
 ## Stack Tecnologico
 
@@ -31,17 +32,17 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 
 ### Landing
 
-- Hero con promesa clara, beneficios, pricing y formulario embebido.
-- CTA principal: generar preview.
-- CTA secundaria: ver como funciona.
+- Hero en modo oscuro con una sola CTA principal y el formulario visible arriba.
+- Despues del hero se muestra un mock UGC, una seccion de dolor, un bloque de 3 pasos, la vista previa y luego pricing.
+- No se muestra pricing antes del formulario.
 
 ### Generacion
 
 1. Usuario ingresa `businessCategory`, `offer`, `city`, `whatsapp` y `tone`.
 2. Frontend valida campos minimos.
 3. Frontend llama `POST /api/v1/generations`.
-4. API devuelve un objeto `Generation` listo para preview.
-5. Usuario puede descargar o regenerar variando el tono.
+4. API devuelve un objeto `Generation` listo para vista previa.
+5. La landing presenta pricing despues del preview, sin cambiar la logica actual de descarga o regeneracion.
 6. Si la API no esta disponible, el frontend genera un preview demo local y mantiene la landing operativa.
 
 ## Integraciones Externas
@@ -71,5 +72,6 @@ Plataforma SaaS para negocios de Latam que venden por WhatsApp y necesitan gener
 
 - Mobile-first.
 - Sin scroll horizontal.
+- Landing en modo oscuro con alto contraste.
 - Feedback claro para `loading`, `error` y `empty`.
 - Focus visible en todos los elementos interactivos.
