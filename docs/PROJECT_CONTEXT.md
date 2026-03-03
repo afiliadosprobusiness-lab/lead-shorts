@@ -6,7 +6,7 @@ Proyecto para validar un MVP SaaS que genera previews de videos tipo influencer 
 
 ## Estado Actual
 
-- Landing de alta conversion en `apps/web`, ahora en modo oscuro y con el formulario mas arriba que pricing.
+- Landing de alta conversion en `apps/web`, en modo oscuro, con el formulario arriba y una muestra funcional dentro de la misma pagina.
 - API REST en `apps/api`, preparada para deploy serverless en Vercel.
 - Contrato base definido en `docs/contract.md`.
 - Fallback demo en frontend cuando la API no responde, util para deploy estatico en Vercel.
@@ -21,10 +21,11 @@ Proyecto para validar un MVP SaaS que genera previews de videos tipo influencer 
 ## Flujo MVP
 
 1. El usuario llega a la landing en modo oscuro.
-2. Ve el formulario arriba, genera su primera muestra y revisa la vista previa.
-3. Despues del preview, la landing presenta pricing para empujar conversion a plan.
-4. Puede regenerar otra version con un tono distinto.
-5. Si la API no responde, la web usa un preview demo local.
+2. Ve el formulario arriba, genera su primera muestra y la revisa dentro de la propia landing.
+3. La web hace scroll al bloque de muestra cuando termina de generarla.
+4. Despues del preview, la landing presenta pricing para empujar conversion a plan.
+5. Puede regenerar otra version con un tono distinto.
+6. Si la API no responde, la web usa un preview demo local.
 
 ## Dependencias Clave
 

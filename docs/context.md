@@ -32,8 +32,8 @@ Plataforma SaaS para negocios de Latam que necesitan generar videos tipo influen
 
 ### Landing
 
-- Hero en modo oscuro con una sola CTA principal y el formulario visible arriba.
-- Despues del hero se muestra un mock UGC, una seccion de dolor, un bloque de 3 pasos, la vista previa y luego pricing.
+- Hero en modo oscuro con foco en beneficios numericos y el formulario visible arriba.
+- Despues del hero se muestran beneficios de negocio, una seccion de dolor, un bloque de 3 pasos, la vista previa y luego pricing.
 - No se muestra pricing antes del formulario.
 
 ### Generacion
@@ -42,8 +42,9 @@ Plataforma SaaS para negocios de Latam que necesitan generar videos tipo influen
 2. Frontend valida campos minimos.
 3. Frontend llama `POST /api/v1/generations`.
 4. API devuelve un objeto `Generation` listo para vista previa.
-5. La landing presenta pricing despues del preview, sin cambiar la logica actual de descarga o regeneracion.
-6. Si la API no esta disponible, el frontend genera un preview demo local y mantiene la landing operativa.
+5. La landing renderiza una muestra funcional dentro de la pagina con el contenido generado, incluso si el enlace externo aun es temporal.
+6. La landing presenta pricing despues del preview, sin cambiar la logica actual de descarga o regeneracion.
+7. Si la API no esta disponible, el frontend genera un preview demo local y mantiene la landing operativa.
 
 ## Integraciones Externas
 
@@ -73,5 +74,6 @@ Plataforma SaaS para negocios de Latam que necesitan generar videos tipo influen
 - Mobile-first.
 - Sin scroll horizontal.
 - Landing en modo oscuro con alto contraste.
+- La muestra se actualiza con lo que el usuario escribe y hace scroll automatico al generarla.
 - Feedback claro para `loading`, `error` y `empty`.
 - Focus visible en todos los elementos interactivos.
