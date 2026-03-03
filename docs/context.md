@@ -32,9 +32,10 @@ Plataforma SaaS para negocios de Latam que necesitan generar videos tipo influen
 
 ### Landing
 
-- Hero en modo oscuro con foco en beneficios numericos y el formulario visible arriba.
+- Hero en modo oscuro con foco en beneficios numericos, composicion mas editorial y el formulario visible arriba.
 - Despues del hero se muestran beneficios de negocio, una seccion de dolor, un bloque de 3 pasos, la vista previa y luego pricing.
 - No se muestra pricing antes del formulario.
+- La landing incluye metadata SEO, favicon y vista social para compartir enlaces.
 
 ### Generacion
 

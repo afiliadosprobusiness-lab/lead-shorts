@@ -6,7 +6,8 @@ Proyecto para validar un MVP SaaS que genera previews de videos tipo influencer 
 
 ## Estado Actual
 
-- Landing de alta conversion en `apps/web`, en modo oscuro, con el formulario arriba y una muestra funcional dentro de la misma pagina.
+- Landing de alta conversion en `apps/web`, en modo oscuro, con estilo mas editorial, formulario arriba y una muestra funcional dentro de la misma pagina.
+- La cabecera del frontend ya incluye SEO base (title, metas sociales y favicon).
 - API REST en `apps/api`, preparada para deploy serverless en Vercel.
 - Contrato base definido en `docs/contract.md`.
 - Fallback demo en frontend cuando la API no responde, util para deploy estatico en Vercel.

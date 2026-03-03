@@ -31,6 +31,10 @@ const quickBenefits = [
   "Tu oferta se entiende en segundos.",
   "Publicas mas veces cada semana."
 ];
+const impactTimeline = [
+  { value: "7 dias", label: "para aparecer 3 veces sin grabarte" },
+  { value: "30 dias", label: "para mantener tu negocio presente" }
+];
 const painPoints = [
   "Pasas dias sin publicar nada.",
   "Te falta tiempo para grabarte.",
@@ -192,7 +196,29 @@ function App() {
                 <p className="max-w-2xl text-lg leading-8 text-slate-300">Escribes tu oferta. Nosotros armamos el video. Tu sales a vender hoy.</p>
                 <p className="max-w-2xl text-base leading-7 text-slate-400">En menos de 1 minuto puedes ver una muestra lista para seguir apareciendo en Reels, TikTok, Shorts y Feed.</p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-3">{headlineStats.map((stat) => <article key={stat.label} className="rounded-[1.4rem] border border-white/10 bg-slate-900/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:rounded-[1.75rem] sm:p-5"><p className="font-display text-3xl font-bold text-white sm:text-4xl">{stat.value}</p><p className="mt-2 text-sm leading-6 text-slate-300">{stat.label}</p></article>)}</div>
+              <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+                <section className="relative overflow-hidden rounded-[1.55rem] border border-white/10 bg-[linear-gradient(145deg,rgba(15,23,42,0.96),rgba(17,24,39,0.86))] p-5 shadow-[0_20px_50px_rgba(2,6,23,0.34)] sm:rounded-[1.9rem] sm:p-6">
+                  <div className="pointer-events-none absolute right-0 top-0 h-28 w-28 rounded-full bg-emerald-400/10 blur-2xl" />
+                  <div className="pointer-events-none absolute bottom-0 left-0 h-24 w-24 rounded-full bg-orange-400/10 blur-2xl" />
+                  <div className="relative">
+                    <div className="flex items-center justify-between">
+                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">Impacto rapido</span>
+                      <span className="text-xs font-medium text-slate-400">Sin grabar</span>
+                    </div>
+                    <h3 className="mt-5 max-w-lg font-display text-2xl font-bold leading-tight text-white sm:text-3xl">En una semana puedes volver a aparecer frente a tus clientes varias veces.</h3>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-slate-300">Este formato te ayuda a mantenerte visible con menos esfuerzo y con un mensaje claro cada vez que publiques.</p>
+                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                      {impactTimeline.map((item) => (
+                        <div key={item.value} className="rounded-[1.2rem] border border-white/10 bg-slate-950/45 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]">
+                          <p className="font-display text-2xl font-bold text-white">{item.value}</p>
+                          <p className="mt-2 text-sm leading-6 text-slate-300">{item.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">{headlineStats.map((stat) => <article key={stat.label} className="rounded-[1.4rem] border border-white/10 bg-slate-900/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:rounded-[1.75rem] sm:p-5"><p className="font-display text-3xl font-bold text-white sm:text-4xl">{stat.value}</p><p className="mt-2 text-sm leading-6 text-slate-300">{stat.label}</p></article>)}</div>
+              </div>
               <div className="grid gap-3 sm:grid-cols-2">{quickBenefits.map((item) => <div key={item} className="rounded-3xl border border-white/10 bg-slate-950/55 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:py-4"><p className="text-sm font-medium text-slate-200">{item}</p></div>)}</div>
               <div className="rounded-[1.4rem] border border-white/10 bg-slate-900/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:rounded-[1.75rem] sm:p-5"><p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-200">Lo que ganas</p><p className="mt-3 text-base leading-7 text-slate-300">Si publicas 3 o mas veces por semana, mas personas te recuerdan. Eso te trae mas preguntas, mas mensajes y mas oportunidades de venta.</p></div>
             </div>
@@ -203,6 +229,10 @@ function App() {
                 <div className="mt-3 h-px w-16 bg-gradient-to-r from-emerald-300/70 to-transparent" />
                 <h2 id="form-title" className="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Genera tu primer video ahora.</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">Llena este formulario y tu muestra aparecera abajo en segundos.</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">1 minuto</span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">Listo para redes</span>
+                </div>
               </div>
               <form onSubmit={handleSubmit} className="mt-5 grid gap-4 sm:mt-6 sm:gap-5" noValidate>
                 <label className="grid gap-2 text-sm font-semibold text-slate-200">Que tipo de negocio tienes?
