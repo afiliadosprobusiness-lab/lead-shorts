@@ -181,63 +181,63 @@ function App() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[720px] bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.10),transparent_34%),radial-gradient(circle_at_top_right,rgba(249,115,22,0.12),transparent_38%)]" />
       <div className="relative">
         <main id="inicio" className="mx-auto max-w-7xl px-4 pb-20 pt-5 sm:px-6 lg:px-8">
-          <section className="relative overflow-hidden rounded-[2.3rem] border border-white/10 bg-[linear-gradient(180deg,rgba(3,7,18,0.96),rgba(2,6,23,0.92))] p-4 shadow-[0_30px_80px_rgba(2,6,23,0.45)] sm:rounded-[2.7rem] sm:p-6 lg:p-8">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(148,163,184,0.08),transparent_28%),radial-gradient(circle_at_72%_30%,rgba(250,204,21,0.14),transparent_18%),radial-gradient(circle_at_76%_56%,rgba(59,130,246,0.12),transparent_16%),radial-gradient(circle_at_50%_10%,rgba(16,185,129,0.08),transparent_24%)]" />
+          <section className="relative overflow-hidden rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(2,6,23,0.98),rgba(8,15,32,0.94))] p-4 shadow-[0_30px_100px_rgba(2,6,23,0.52)] sm:rounded-[2.9rem] sm:p-6 lg:p-8">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_0%,rgba(59,130,246,0.08),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(16,185,129,0.12),transparent_20%),radial-gradient(circle_at_76%_60%,rgba(249,115,22,0.14),transparent_22%),linear-gradient(rgba(148,163,184,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.04)_1px,transparent_1px)] bg-[length:auto,auto,auto,72px_72px,72px_72px]" />
             <div className="pointer-events-none absolute -right-20 top-28 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
             <div className="pointer-events-none absolute left-12 top-20 hidden h-1 w-1 rounded-full bg-white/40 shadow-[120px_40px_0_rgba(255,255,255,0.3),280px_22px_0_rgba(255,255,255,0.26),420px_76px_0_rgba(255,255,255,0.22),640px_34px_0_rgba(255,255,255,0.2)] sm:block" />
 
             <div className="relative">
-              <div className="flex items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              <div className="flex items-center justify-between rounded-full border border-white/10 bg-slate-950/75 px-4 py-3 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
                 <a href="#inicio" className="font-display text-sm font-bold tracking-[0.24em] text-white">LEAD SHORTS</a>
-                <div className="hidden items-center gap-6 text-sm text-slate-400 lg:flex">
-                  <span>Contenido</span>
-                  <span>Resultado</span>
-                  <span>Planes</span>
-                </div>
+                <nav className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] p-1 md:flex" aria-label="Secciones principales">
+                  <a href="#contenido" className="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition duration-200 ease-out hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Contenido</a>
+                  <a href="#preview-real" className="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition duration-200 ease-out hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Resultado</a>
+                  <a href="#planes" className="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition duration-200 ease-out hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Planes</a>
+                </nav>
                 <a href="#generador" className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition duration-200 ease-out hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Crear gratis</a>
               </div>
 
-              <div className="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-                <div className="space-y-6">
-                  <div className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-300">1 video hoy. Mas consultas esta semana.</div>
+              <div className="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+                <div className="space-y-7">
+                  <div className="inline-flex rounded-full border border-emerald-300/15 bg-emerald-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-200">Haz que tu marca se vea mas grande</div>
                   <div className="space-y-5">
-                    <h1 className="max-w-3xl font-display text-[2.65rem] font-bold leading-[0.95] text-white sm:text-[4.5rem] lg:text-[5.2rem]">Haz que tu negocio se vea imposible de ignorar.</h1>
-                    <p className="max-w-2xl text-lg leading-8 text-slate-300">Escribes tu oferta. Nosotros armamos el video. Tu vuelves a aparecer frente a tus clientes hoy.</p>
-                    <p className="max-w-2xl text-base leading-7 text-slate-400">Hecho para que tu negocio se vea activo, serio y presente en Reels, TikTok, Shorts y Feed.</p>
+                    <h1 className="max-w-3xl font-display text-[2.85rem] font-bold leading-[0.9] text-white sm:text-[4.8rem] lg:text-[5.6rem]">Haz que tu negocio se vea como una marca que siempre esta en movimiento.</h1>
+                    <p className="max-w-2xl text-lg leading-8 text-slate-300">Escribes tu oferta una vez. Nosotros la convertimos en un video listo para volver a ponerte frente a tus clientes hoy mismo.</p>
+                    <p className="max-w-2xl text-base leading-8 text-slate-400">La meta es simple: mas presencia, mas recuerdo y mas oportunidades de que te escriban.</p>
                   </div>
 
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <a href="#generador" className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-bold text-slate-950 shadow-[0_16px_32px_rgba(16,185,129,0.18)] transition duration-200 ease-out hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Crear mi primer video</a>
-                    <span className="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-slate-300">Tu muestra aparece en menos de 1 minuto</span>
+                  <div className="grid gap-3 sm:grid-cols-[auto_1fr] sm:items-center">
+                    <a href="#generador" className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-bold text-slate-950 shadow-[0_16px_32px_rgba(16,185,129,0.18)] transition duration-200 ease-out hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">Crear mi primer video</a>
+                    <span className="rounded-[1.2rem] border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium text-slate-300">Tu muestra aparece en menos de 1 minuto y la revisas aqui mismo.</span>
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-3">
                     {headlineStats.map((stat) => (
-                      <article key={stat.label} className="rounded-[1.35rem] border border-white/10 bg-white/[0.03] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-                        <p className="font-display text-3xl font-bold text-white sm:text-4xl">{stat.value}</p>
+                      <article key={stat.label} className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                        <p className="font-display text-4xl font-bold text-white">{stat.value}</p>
                         <p className="mt-2 text-sm leading-6 text-slate-300">{stat.label}</p>
                       </article>
                     ))}
                   </div>
                 </div>
 
-                <div className="relative min-h-[360px] sm:min-h-[430px]">
-                  <div className="absolute inset-x-8 top-10 h-56 rounded-full bg-[radial-gradient(circle,rgba(250,204,21,0.36),rgba(59,130,246,0.16)_35%,rgba(15,23,42,0)_70%)] blur-2xl" />
+                <div className="relative min-h-[420px] rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.76),rgba(2,6,23,0.92))] p-5 shadow-[0_24px_70px_rgba(2,6,23,0.35)] sm:min-h-[460px] sm:p-6">
+                  <div className="absolute inset-x-8 top-10 h-48 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.24),rgba(16,185,129,0.14)_35%,rgba(15,23,42,0)_70%)] blur-2xl" />
                   <div className="absolute left-1/2 top-20 h-64 w-64 -translate-x-1/2 rounded-full border border-white/10 bg-[radial-gradient(circle_at_35%_30%,rgba(255,255,255,0.92),rgba(250,204,21,0.42)_18%,rgba(15,23,42,0.02)_38%,rgba(15,23,42,0.95)_72%),radial-gradient(circle_at_70%_78%,rgba(59,130,246,0.52),transparent_28%),radial-gradient(circle_at_62%_22%,rgba(251,191,36,0.36),transparent_24%),#020617] shadow-[0_0_120px_rgba(250,204,21,0.1)] sm:h-80 sm:w-80" />
-                  <div className="absolute left-0 top-28 w-44 rounded-[1.25rem] border border-white/10 bg-slate-950/70 p-4 backdrop-blur-xl shadow-[0_18px_40px_rgba(2,6,23,0.28)]">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Visibilidad</p>
-                    <p className="mt-2 text-3xl font-bold text-white">3x</p>
+                  <div className="absolute left-0 top-24 w-44 rounded-[1.35rem] border border-white/10 bg-slate-950/75 p-4 backdrop-blur-xl shadow-[0_18px_40px_rgba(2,6,23,0.28)]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Presencia</p>
+                    <p className="mt-2 text-3xl font-bold text-white">12</p>
                     <p className="mt-2 text-sm leading-6 text-slate-300">Más oportunidades de aparecer cada semana.</p>
                   </div>
-                  <div className="absolute right-0 top-12 w-44 rounded-[1.25rem] border border-white/10 bg-slate-950/70 p-4 backdrop-blur-xl shadow-[0_18px_40px_rgba(2,6,23,0.28)]">
+                  <div className="absolute right-0 top-10 w-44 rounded-[1.35rem] border border-white/10 bg-slate-950/75 p-4 backdrop-blur-xl shadow-[0_18px_40px_rgba(2,6,23,0.28)]">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Atencion</p>
                     <p className="mt-2 text-3xl font-bold text-white">96%</p>
                     <div className="mt-3 h-1.5 rounded-full bg-white/5"><div className="h-full w-[96%] rounded-full bg-white" /></div>
                   </div>
-                  <div className="absolute bottom-0 right-2 w-[15.5rem] rounded-[1.6rem] border border-white/10 bg-slate-950/80 p-4 backdrop-blur-xl shadow-[0_20px_50px_rgba(2,6,23,0.32)] sm:w-[17rem] sm:p-5">
+                  <div className="absolute bottom-0 right-2 w-[16.5rem] rounded-[1.8rem] border border-white/10 bg-slate-950/85 p-4 backdrop-blur-xl shadow-[0_24px_60px_rgba(2,6,23,0.36)] sm:w-[18rem] sm:p-5">
                     <div className="flex items-center justify-between">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Vista del video</p>
-                      <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-300">9:16</span>
+                      <span className="rounded-full border border-emerald-300/15 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-200">En vivo</span>
                     </div>
                     <div className="mt-4 rounded-[1.25rem] border border-white/10 bg-slate-900/90 p-3">
                       <div className="h-28 rounded-[1rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(2,6,23,0.7)),radial-gradient(circle_at_40%_25%,rgba(250,204,21,0.42),transparent_20%),radial-gradient(circle_at_70%_70%,rgba(59,130,246,0.26),transparent_18%),#111827]" />
@@ -247,15 +247,15 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
+              <div className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
                 <div className="grid gap-4">
-                  <section className="rounded-[1.7rem] border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6">
+                  <section className="rounded-[1.85rem] border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6">
                     <div className="flex items-center justify-between">
-                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">Impacto rapido</span>
-                      <span className="text-xs font-medium text-slate-400">Sin grabar</span>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">Impacto real</span>
+                      <span className="rounded-full border border-emerald-300/15 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-200">Sin grabar</span>
                     </div>
-                    <h3 className="mt-5 max-w-lg font-display text-2xl font-bold leading-tight text-white sm:text-3xl">En una semana puedes volver a aparecer frente a tus clientes varias veces.</h3>
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-slate-300">Este formato te ayuda a mantenerte visible con menos esfuerzo y con un mensaje claro cada vez que publiques.</p>
+                    <h3 className="mt-5 max-w-lg font-display text-3xl font-bold leading-tight text-white">Tu negocio puede verse activo, confiable y presente desde esta misma semana.</h3>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-slate-300">La clave no es publicar por publicar. La clave es aparecer con un mensaje corto, claro y constante para que el cliente te recuerde.</p>
                     <div className="mt-5 grid gap-3 sm:grid-cols-2">
                       {impactTimeline.map((item) => (
                         <div key={item.value} className="rounded-[1.2rem] border border-white/10 bg-slate-950/55 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]">
@@ -266,14 +266,19 @@ function App() {
                     </div>
                   </section>
                   <div className="grid gap-3 sm:grid-cols-2">{quickBenefits.map((item) => <div key={item} className="rounded-3xl border border-white/10 bg-slate-950/55 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:py-4"><p className="text-sm font-medium text-slate-200">{item}</p></div>)}</div>
-                  <div className="rounded-[1.4rem] border border-white/10 bg-slate-900/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:rounded-[1.75rem] sm:p-5"><p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-200">Lo que ganas</p><p className="mt-3 text-base leading-7 text-slate-300">Si publicas 3 o mas veces por semana, mas personas te recuerdan. Eso te trae mas preguntas, mas mensajes y mas oportunidades de venta.</p></div>
+                  <div className="rounded-[1.5rem] border border-white/10 bg-slate-900/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:rounded-[1.85rem] sm:p-5"><p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-200">Lo que ganas</p><p className="mt-3 text-base leading-7 text-slate-300">Si publicas 3 o mas veces por semana, mas personas te recuerdan. Eso trae mas preguntas, mas mensajes y mas oportunidades de venta.</p></div>
                 </div>
 
-                <section id="generador" className="glass-panel rounded-[1.8rem] border border-white/10 p-4 shadow-soft lg:sticky lg:top-6 sm:p-6" aria-labelledby="form-title">
-                  <div className="rounded-[1.4rem] border border-white/10 bg-slate-950/55 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Paso 1</p>
-                    <div className="mt-3 h-px w-16 bg-gradient-to-r from-emerald-300/70 to-transparent" />
-                    <h2 id="form-title" className="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Genera tu primer video ahora.</h2>
+                <section id="generador" className="glass-panel rounded-[2rem] border border-white/10 p-4 shadow-soft lg:sticky lg:top-6 sm:p-6" aria-labelledby="form-title">
+                  <div className="rounded-[1.55rem] border border-white/10 bg-slate-950/60 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] sm:p-5">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Empieza ahora</p>
+                        <div className="mt-3 h-px w-16 bg-gradient-to-r from-emerald-300/70 to-transparent" />
+                      </div>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">Paso 1</span>
+                    </div>
+                    <h2 id="form-title" className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">Genera tu primer video ahora.</h2>
                     <p className="mt-3 text-sm leading-7 text-slate-300">Llena este formulario y tu muestra aparecera abajo en segundos.</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">1 minuto</span>
@@ -310,13 +315,13 @@ function App() {
             </div>
           </section>
 
-          <section className="relative mt-10 overflow-hidden rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(2,6,23,0.92))] p-4 sm:mt-14 sm:rounded-[2.3rem] sm:p-8">
+          <section id="contenido" className="relative mt-10 overflow-hidden rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(2,6,23,0.92))] p-4 sm:mt-14 sm:rounded-[2.3rem] sm:p-8">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.12),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.1),transparent_28%)]" />
             <div className="relative grid gap-6 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
               <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/65 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:rounded-[2rem] sm:p-7">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-orange-200">Tu presencia</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-orange-200">Lo que gana tu negocio</p>
                 <div className="mt-3 h-px w-20 bg-gradient-to-r from-orange-300/80 to-transparent" />
-                <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">Cuando publicas seguido, tu negocio deja de verse quieto.</h2>
+                <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">Cuando publicas seguido, tu negocio deja de verse pequeno.</h2>
                 <p className="mt-4 max-w-xl text-base leading-8 text-slate-300">No necesitas grabarte todos los dias. Necesitas aparecer con frecuencia, con un mensaje claro y con una imagen que se vea seria.</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {impactTimeline.map((item) => (
@@ -479,7 +484,7 @@ function App() {
                 <p className="mt-3 text-sm leading-7 text-slate-300">Cuanto mas publicas, mas veces te ven. Aqui eliges el ritmo que mejor se ajusta a tu negocio y a tu meta de ventas.</p>
               </section>
               {loadError ? <div className="rounded-[1.5rem] border border-red-400/30 bg-red-500/10 p-5 text-sm text-red-200" role="alert">{loadError}</div> : null}
-              <section className="grid gap-4">
+              <section id="planes" className="grid gap-4">
                 {orderedPlans.map((plan) => {
                   const planCopy = getPlanLabel(plan);
                   return (
